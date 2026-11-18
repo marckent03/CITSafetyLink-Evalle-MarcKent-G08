@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CIT SafetyLink</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'dashboard_router' %}">Dashboard</a> | 
+        <a href="{% url 'profile' %}">Profile</a> | 
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+    <hr>
+    <!-- Display Success/Error Messages -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li{% if message.tags == 'error' %} class="error"{% else %} class="success"{% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
+</html>
